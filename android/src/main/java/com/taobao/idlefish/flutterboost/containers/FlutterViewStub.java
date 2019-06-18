@@ -130,9 +130,15 @@ abstract public class FlutterViewStub extends FrameLayout {
             if (flutterView.getParent() != null) {
                 ((ViewGroup) flutterView.getParent()).removeView(flutterView);
             }
+            int height = flutterView.getHeight();
+            if (height > 0) {
+                height = (int)( height * 0.9);
+            } else {
+                height = 2000;
+            }
 
             mStub.addView(flutterView, new FrameLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                    ViewGroup.LayoutParams.MATCH_PARENT, height));
         }
     }
 
